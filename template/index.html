@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="../static/style.css" />
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chatbot</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="chatbox">
+        <div class="chatbox__support">
+          <div class="chatbox__header">
+            <div class="chatbox__header__inner">
+              <div class="chatbox__image--header">
+                <div class="chatbox_status"></div>
+                <img src="../static/images/ChatIcon.png" alt="image" />
+              </div>
+              <div class="chatbox__content--header">
+                <h4 class="chatbox__heading--header">Chat Support</h4>
+                <p class="chatbox__description--header">Online</p>
+              </div>
+            </div>
+            <div class="chatbox__close">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                  fill="#5e6165"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <div class="chatbox__messages">
+            <div></div>
+          </div>
+          <div class="chatbox__footer">
+            <input
+              type="text"
+              placeholder="Write a message..."
+              oninput="handleChange(this)"
+            />
+            <div class="chatbox__send">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                xml:space="preserve"
+              >
+                <path
+                  id="send"
+                  fill="#d7d7d7"
+                  d="M22,11.7V12h-0.1c-0.1,1-17.7,9.5-18.8,9.1c-1.1-0.4,2.4-6.7,3-7.5C6.8,12.9,17.1,12,17.1,12H17c0,0,0-0.2,0-0.2c0,0,0,0,0,0c0-0.4-10.2-1-10.8-1.7c-0.6-0.7-4-7.1-3-7.5C4.3,2.1,22,10.5,22,11.7z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="chatbox__button">
+          <button><img src="../static/images/ChatIcon.png" /></button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../static/app.js"></script>
+  </body>
+</html>
