@@ -75,7 +75,7 @@ class Chatbox {
         this.AddTypingAnnimationBot(chatbox);
 
         try {
-            const response = await fetch('https://34.211.200.85:5000/api/chat', {
+            const response = await fetch('https://chat-bot-flask.onrender.com/api/chat', {
                 method: 'POST',
                 body: JSON.stringify({ message: text1 }),
                 mode: 'cors',

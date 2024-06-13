@@ -1,6 +1,7 @@
-from flask import Flask, request, jsonify, render_template
-from nltk.stem import WordNetLemmatizer
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 import nltk
+from nltk.stem import WordNetLemmatizer
 import pickle
 import numpy as np
 from keras.models import load_model
