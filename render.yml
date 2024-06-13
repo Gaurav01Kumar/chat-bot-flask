@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: your-flask-app
+    env: python
+    plan: free
+    buildCommand: |
+      pip install -r requirements.txt
+      python download_nltk_data.py
+    startCommand: gunicorn app:app
