@@ -56,46 +56,48 @@ class Chatbox {
         }
     }
 
-    onSendButton(chatbox) {
-
+   async onSendButton(chatbox) {
         var textField = chatbox.querySelector('input');
-        let text1 = textField.value
+        let text1 = textField.value;
         if (text1 === "") {
             return;
         }
 
-        let msg1 = { name: "User", message: text1 }
+        let msg1 = { name: "User", message: text1 };
         this.messages.push(msg1);
 
-        this.updateChatText(chatbox)
-        textField.value = ''
+        this.updateChatText(chatbox);
+        textField.value = '';
+
         const pathElement = document.getElementById('send');
         pathElement.setAttribute('fill', '#d7d7d7');
 
         this.AddTypingAnnimationBot(chatbox);
 
-        fetch('http://34.211.200.85:5000/api/chat', {
-            method: 'POST',
-            body: JSON.stringify({ message: text1 }),
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-            .then(r => r.json())
-            .then(r => {
-                setTimeout(() => {
-                    let msg2 = { name: "Sam", message: r.response };
-                    this.messages.push(msg2);
-                    this.updateChatText(chatbox)
-                    textField.value = ''
-                }, 1000);
-            }).catch((error) => {
-                console.error('Error:', error);
-                this.updateChatText(chatbox)
-                textField.value = ''
+        try {
+            const response = await fetch('https://34.211.200.85:5000/api/chat', {
+                method: 'POST',
+                body: JSON.stringify({ message: text1 }),
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
             });
 
+            const data = await response.json();
+
+            setTimeout(() => {
+                let msg2 = { name: "Sam", message: data.response };
+                this.messages.push(msg2);
+                this.updateChatText(chatbox);
+                textField.value = '';
+            }, 1000);
+        } catch (error) {
+            console.error('Error:', error);
+            this.updateChatText(chatbox);
+            textField.value = '';
+        }
+    
     }
 
     AddTypingAnnimationBot(chatbox) {
