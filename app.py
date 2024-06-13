@@ -65,11 +65,17 @@ def chatbot_response(msg):
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
-    data = request.get_json()
-    message = data['message']
-    print(message)
-    response = chatbot_response(message)
-    return jsonify({'response': response})
+    try:
+        user_message = request.json.get('message')
+        if user_message:
+            response = chatbot_response(user_message)
+            return jsonify({"response": response})
+        else:
+            return jsonify({"error": "No message provided"}), 400
+    except Exception as e:
+        app.logger.error(f"Error handling the /api/chat route: {e}")
+        return jsonify({"error": str(e)}), 500
+
 
 @app.route("/")
 def start():
